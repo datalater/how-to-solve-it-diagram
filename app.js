@@ -19,6 +19,10 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/main.html");
 });
 
+app.get("/result", (req, res) => {
+  res.sendFile(__dirname + "/public/main.html");
+});
+
 app.post("/result", (req, res) => {
   console.log(req.body);
   res.render("result.ejs", {
