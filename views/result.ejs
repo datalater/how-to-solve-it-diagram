@@ -12,7 +12,7 @@
   </head>
   <body>
     <div class="user_form">
-      <form action="/result" method="post">
+      <form action="/export_pdf" method="post">
         <h1>어떻게 풀 것인가</h1>
         <div id="page1">
           <h2>Step#1: 문제 이해하기</h2>
@@ -21,17 +21,17 @@
             것이다.
           </blockquote>
           <h3>Q1. 알아내야 하는 것은 무엇인가?</h3>
-          <textarea name="answer1" rows="5" cols="80"></textarea><br />
+          <p><%= answer1 %></p>
           <h3>Q2. 자료는 무엇인가?</h3>
-          <textarea name="answer2" rows="5" cols="80"></textarea><br />
+          <p><%= answer2 %></p>
           <h3>
             Q3. 조건은 무엇인가?
           </h3>
-          <textarea name="answer3" rows="5" cols="80"></textarea><br />
+          <p><%= answer3 %></p>
           <h3>
             Q4. 조건은 알아내야 하는 것을 결정하기에 충분한가?
           </h3>
-          <textarea name="answer4" rows="5" cols="80"></textarea><br />
+          <p><%= answer4 %></p>
         </div>
         <div id="page2">
           <h2>Step#2: 계획 세우기</h2>
@@ -39,15 +39,15 @@
             좋은 생각이란 과거의 경험과 이전에 얻은 지식을 바탕으로 한 것이다.
           </blockquote>
           <h3>Q5. 관련된 문제를 알고 있는가?</h3>
-          <textarea name="answer5" rows="5" cols="80"></textarea><br />
+          <p><%= answer5 %></p>
           <h3>Q6. 미지인 것이 유사한 다른 문제를 풀어본 적 있는가?</h3>
-          <textarea name="answer6" rows="5" cols="80"></textarea><br />
+          <p><%= answer6 %></p>
           <h3>
             Q7. 전에 풀어본 문제를 활용하려면 어떤 보조 요소를 도입해야 할까?
           </h3>
-          <textarea name="answer7" rows="5" cols="80"></textarea><br />
+          <p><%= answer7 %></p>
           <h3>Q8. 자료는 모두 활용했는가? 조건은 모두 활용했는가?</h3>
-          <textarea name="answer8" rows="5" cols="80"></textarea><br />
+          <p><%= answer8 %></p>
         </div>
         <div id="page3">
           <h2>Step#3: 계획 실행하기</h2>
@@ -55,7 +55,7 @@
             중요한 것은 각 단계의 정확성을 진정으로 납득해야 한다는 점이다.
           </blockquote>
           <h3>Q9. 각 단계가 올바른지 명확히 알 수 있는가?</h3>
-          <textarea name="answer9" rows="5" cols="80"></textarea><br />
+          <p><%= answer9 %></p>
         </div>
         <div id="page4">
           <h2>Step#4: 반성하기</h2>
@@ -64,27 +64,14 @@
             획득한 지식을 견고하게 하고 문제 해결 능력을 발달시킬 수 있다.
           </blockquote>
           <h3>Q10. 결과를 점검할 수 있는가? 논증 과정을 점검할 수 있는가?</h3>
-          <textarea name="answer10" rows="5" cols="80"></textarea><br />
+          <p><%= answer10 %></p>
           <h3>Q11. 결과를 다른 방법으로 이끌어 낼 수 있는가?</h3>
-          <textarea name="answer11" rows="5" cols="80"></textarea><br />
+          <p><%= answer11 %></p>
           <h3>Q12. 결과나 방법을 어떤 다른 문제에 활용할 수 있는가?</h3>
-          <textarea name="answer12" rows="5" cols="80"></textarea><br />
+          <p><%= answer12 %></p>
         </div>
-
-        <input type="submit" value="result" />
       </form>
     </div>
     <hr />
-
-    <canvas
-      id="myCanvas"
-      width="300"
-      height="200"
-      style="border:1px solid #c3c3c3;"
-    >
-      Your browser does not support the canvas element.
-    </canvas>
-
-    <script src="main.js"></script>
   </body>
 </html>
