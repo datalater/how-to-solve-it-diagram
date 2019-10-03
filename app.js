@@ -2,8 +2,9 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const request = require("request");
+const port = process.env.PORT || 3000
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log("Start! express server on port 3000");
 });
 
