@@ -25,5 +25,9 @@
     "html-pdf": "^2.2.0",
     "request": "^2.88.0",
     "serve-favicon": "^2.5.0"
+  },
+  "devDependencies": {
+    "codeceptjs": "^2.3.5",
+    "puppeteer": "^2.0.0"
   }
 }
