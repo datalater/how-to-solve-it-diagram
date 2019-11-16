@@ -73,18 +73,13 @@
 
         <input type="submit" value="result" />
       </form>
+      <button onclick="printPaper()">Print this page</button>
     </div>
     <hr />
-
-    <canvas
-      id="myCanvas"
-      width="300"
-      height="200"
-      style="border:1px solid #c3c3c3;"
-    >
-      Your browser does not support the canvas element.
-    </canvas>
-
-    <script src="main.js"></script>
+    <script>
+      function printPaper() {
+        window.print();
+      }
+    </script>
   </body>
 </html>
