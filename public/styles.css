@@ -195,7 +195,51 @@ body {
 }
 
 .step-nav {
-  margin: 1.15rem 0 0.25rem;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  margin: 0.55rem -1.35rem 0.25rem;
+  padding: 0.65rem 1.35rem;
+  background: rgba(251, 252, 253, 0.92);
+  border-bottom: 1px solid transparent;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition:
+    padding 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.step-nav.is-stuck {
+  padding: 0.35rem 1.35rem;
+  border-bottom-color: rgba(28, 36, 48, 0.08);
+  box-shadow: 0 6px 16px rgba(28, 36, 48, 0.06);
+}
+
+.step-nav.is-stuck .step-nav__list {
+  gap: 0.3rem;
+}
+
+.step-nav.is-stuck .step-nav__btn {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.55rem;
+  border-radius: 999px;
+  transform: none;
+}
+
+.step-nav.is-stuck .step-nav__btn.is-active {
+  transform: none;
+}
+
+.step-nav.is-stuck .step-nav__num {
+  font-size: 0.7rem;
+  opacity: 0.75;
+}
+
+.step-nav.is-stuck .step-nav__label {
+  font-size: 0.78rem;
 }
 
 .worksheet[data-view="all"] .step-nav__btn.is-active {
@@ -288,6 +332,7 @@ body {
 }
 
 .step {
+  scroll-margin-top: 3.75rem;
   animation: fade-step 0.28s ease both;
 }
 
@@ -520,7 +565,20 @@ textarea:focus {
 
 @media (max-width: 560px) {
   .step-nav__list {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .step-nav__btn {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    padding: 0.45rem 0.2rem;
+  }
+
+  .step-nav__num,
+  .step-nav__label {
+    font-size: 0.72rem;
   }
 
   .toolbar {

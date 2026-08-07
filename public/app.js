@@ -5,6 +5,7 @@
 
   const worksheet = document.getElementById("worksheet");
   const form = document.getElementById("solve-form");
+  const stepNav = document.querySelector("[data-step-nav]");
   const steps = [...document.querySelectorAll("[data-step]")];
   const navButtons = [...document.querySelectorAll("[data-go-step]")];
   const viewButtons = [...document.querySelectorAll("[data-view]")];
@@ -19,6 +20,7 @@
   let currentStep = 0;
   let viewMode = "step";
   let saveTimer = 0;
+  let sectionObserver = null;
 
   function loadAnswers() {
     try {
@@ -63,13 +65,65 @@
     saveTimer = window.setTimeout(persist, 200);
   }
 
-  function updateStepNav() {
+  function updateStepNav(activeIndex = currentStep) {
     navButtons.forEach((btn) => {
       const stepIndex = Number(btn.dataset.goStep);
-      const active = viewMode === "step" && stepIndex === currentStep;
+      const active = stepIndex === activeIndex;
       btn.classList.toggle("is-active", active);
       btn.setAttribute("aria-current", active ? "step" : "false");
     });
+  }
+
+  function getStickyOffset() {
+    return (stepNav?.offsetHeight || 0) + 12;
+  }
+
+  function scrollToStep(index) {
+    const target = document.getElementById(`step-${index}`);
+    if (!target) return;
+    const top =
+      window.scrollY + target.getBoundingClientRect().top - getStickyOffset();
+    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+  }
+
+  function syncStuckState() {
+    if (!stepNav) return;
+    const stuck = stepNav.getBoundingClientRect().top <= 0.5;
+    stepNav.classList.toggle("is-stuck", stuck);
+  }
+
+  function teardownSectionObserver() {
+    sectionObserver?.disconnect();
+    sectionObserver = null;
+  }
+
+  function setupSectionObserver() {
+    teardownSectionObserver();
+    if (viewMode !== "all" || !("IntersectionObserver" in window)) return;
+
+    sectionObserver = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (a, b) =>
+              a.target.getBoundingClientRect().top -
+              b.target.getBoundingClientRect().top,
+          );
+        if (!visible.length) return;
+        const index = Number(visible[0].target.dataset.step);
+        if (!Number.isNaN(index)) {
+          currentStep = index;
+          updateStepNav(index);
+        }
+      },
+      {
+        rootMargin: `-${getStickyOffset()}px 0px -55% 0px`,
+        threshold: 0,
+      },
+    );
+
+    steps.forEach((step) => sectionObserver.observe(step));
   }
 
   function showStep(index, { focus = true } = {}) {
@@ -115,7 +169,9 @@
 
     if (viewMode === "all") {
       showAll();
+      setupSectionObserver();
     } else {
+      teardownSectionObserver();
       showStep(currentStep, { focus: false });
     }
 
@@ -125,15 +181,16 @@
   }
 
   function goToStep(index) {
+    currentStep = Math.max(0, Math.min(STEP_COUNT - 1, index));
+    updateStepNav(currentStep);
+
     if (viewMode === "all") {
-      currentStep = Math.max(0, Math.min(STEP_COUNT - 1, index));
-      document.getElementById(`step-${currentStep}`)?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+      scrollToStep(currentStep);
       return;
     }
-    showStep(index);
+
+    showStep(currentStep);
+    scrollToStep(currentStep);
   }
 
   function preparePrint() {
@@ -198,7 +255,13 @@
 
   window.addEventListener("beforeprint", preparePrint);
   window.addEventListener("afterprint", restoreAfterPrint);
+  window.addEventListener("scroll", syncStuckState, { passive: true });
+  window.addEventListener("resize", () => {
+    syncStuckState();
+    if (viewMode === "all") setupSectionObserver();
+  });
 
   loadAnswers();
   applyView(loadViewMode(), { persistPreference: false });
+  syncStuckState();
 })();
