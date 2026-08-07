@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>어떻게 풀 것인가</title>
+    <meta
+      name="description"
+      content="폴리아의 How to Solve It 네 단계로 문제를 정리하는 워크시트"
+    />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="./favicon.ico" sizes="any" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#worksheet">본문으로 건너뛰기</a>
+
+    <header class="site-header no-print">
+      <p class="brand">How to Solve It</p>
+      <p class="tagline">문제를 풀기 전에, 먼저 질문으로 정리합니다.</p>
+    </header>
+
+    <main id="worksheet" class="worksheet">
+      <div class="worksheet__title">
+        <h1>어떻게 풀 것인가</h1>
+        <p class="lede">
+          G. 폴리아의 네 단계를 따라 답을 적어 보세요. 작성 내용은 이 브라우저에
+          자동 저장됩니다.
+        </p>
+      </div>
+
+      <div
+        class="view-toggle no-print"
+        role="group"
+        aria-label="보기 모드"
+        data-view-toggle
+      >
+        <button
+          type="button"
+          class="view-toggle__btn is-active"
+          data-view="step"
+          aria-pressed="true"
+        >
+          단계별
+        </button>
+        <button
+          type="button"
+          class="view-toggle__btn"
+          data-view="all"
+          aria-pressed="false"
+        >
+          한번에 보기
+        </button>
+      </div>
+
+      <nav class="step-nav no-print" aria-label="단계 이동" data-step-nav>
+        <ol class="step-nav__list">
+          <li>
+            <button type="button" class="step-nav__btn is-active" data-go-step="0">
+              <span class="step-nav__num">1</span>
+              <span class="step-nav__label">이해하기</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="step-nav__btn" data-go-step="1">
+              <span class="step-nav__num">2</span>
+              <span class="step-nav__label">계획</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="step-nav__btn" data-go-step="2">
+              <span class="step-nav__num">3</span>
+              <span class="step-nav__label">실행</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="step-nav__btn" data-go-step="3">
+              <span class="step-nav__num">4</span>
+              <span class="step-nav__label">반성</span>
+            </button>
+          </li>
+        </ol>
+      </nav>
+
+      <form id="solve-form" class="solve-form" autocomplete="off">
+        <section
+          class="step is-active"
+          data-step="0"
+          id="step-0"
+          aria-labelledby="step1-title"
+        >
+          <header class="step__header">
+            <p class="step__eyebrow">Step 1</p>
+            <h2 id="step1-title">문제 이해하기</h2>
+            <blockquote>
+              가장 최악의 경우는 문제를 이해하지도 않고, 세부적인 것을 실행하는
+              것이다.
+            </blockquote>
+          </header>
+          <div class="field">
+            <label for="answer1">Q1. 알아내야 하는 것은 무엇인가?</label>
+            <textarea id="answer1" name="answer1" rows="4" data-answer></textarea>
+          </div>
+          <div class="field">
+            <label for="answer2">Q2. 자료는 무엇인가?</label>
+            <textarea id="answer2" name="answer2" rows="4" data-answer></textarea>
+          </div>
+          <div class="field">
+            <label for="answer3">Q3. 조건은 무엇인가?</label>
+            <textarea id="answer3" name="answer3" rows="4" data-answer></textarea>
+          </div>
+          <div class="field">
+            <label for="answer4"
+              >Q4. 조건은 알아내야 하는 것을 결정하기에 충분한가?</label
+            >
+            <textarea id="answer4" name="answer4" rows="4" data-answer></textarea>
+          </div>
+        </section>
+
+        <section
+          class="step"
+          data-step="1"
+          id="step-1"
+          aria-labelledby="step2-title"
+          hidden
+        >
+          <header class="step__header">
+            <p class="step__eyebrow">Step 2</p>
+            <h2 id="step2-title">계획 세우기</h2>
+            <blockquote>
+              좋은 생각이란 과거의 경험과 이전에 얻은 지식을 바탕으로 한 것이다.
+            </blockquote>
+          </header>
+          <div class="field">
+            <label for="answer5">Q5. 관련된 문제를 알고 있는가?</label>
+            <textarea id="answer5" name="answer5" rows="4" data-answer></textarea>
+          </div>
+          <div class="field">
+            <label for="answer6"
+              >Q6. 미지인 것이 유사한 다른 문제를 풀어본 적 있는가?</label
+            >
+            <textarea id="answer6" name="answer6" rows="4" data-answer></textarea>
+          </div>
+          <div class="field">
+            <label for="answer7"
+              >Q7. 전에 풀어본 문제를 활용하려면 어떤 보조 요소를 도입해야
+              할까?</label
+            >
+            <textarea id="answer7" name="answer7" rows="4" data-answer></textarea>
+          </div>
+          <div class="field">
+            <label for="answer8"
+              >Q8. 자료는 모두 활용했는가? 조건은 모두 활용했는가?</label
+            >
+            <textarea id="answer8" name="answer8" rows="4" data-answer></textarea>
+          </div>
+        </section>
+
+        <section
+          class="step"
+          data-step="2"
+          id="step-2"
+          aria-labelledby="step3-title"
+          hidden
+        >
+          <header class="step__header">
+            <p class="step__eyebrow">Step 3</p>
+            <h2 id="step3-title">계획 실행하기</h2>
+            <blockquote>
+              중요한 것은 각 단계의 정확성을 진정으로 납득해야 한다는 점이다.
+            </blockquote>
+          </header>
+          <div class="field">
+            <label for="answer9">Q9. 각 단계가 올바른지 명확히 알 수 있는가?</label>
+            <textarea id="answer9" name="answer9" rows="6" data-answer></textarea>
+          </div>
+        </section>
+
+        <section
+          class="step"
+          data-step="3"
+          id="step-3"
+          aria-labelledby="step4-title"
+          hidden
+        >
+          <header class="step__header">
+            <p class="step__eyebrow">Step 4</p>
+            <h2 id="step4-title">반성하기</h2>
+            <blockquote>
+              완성된 풀이를 검토하고 결과에 이르게 된 과정을 재검사함으로써,
+              획득한 지식을 견고하게 하고 문제 해결 능력을 발달시킬 수 있다.
+            </blockquote>
+          </header>
+          <div class="field">
+            <label for="answer10"
+              >Q10. 결과를 점검할 수 있는가? 논증 과정을 점검할 수 있는가?</label
+            >
+            <textarea id="answer10" name="answer10" rows="4" data-answer></textarea>
+          </div>
+          <div class="field">
+            <label for="answer11">Q11. 결과를 다른 방법으로 이끌어 낼 수 있는가?</label>
+            <textarea id="answer11" name="answer11" rows="4" data-answer></textarea>
+          </div>
+          <div class="field">
+            <label for="answer12"
+              >Q12. 결과나 방법을 어떤 다른 문제에 활용할 수 있는가?</label
+            >
+            <textarea id="answer12" name="answer12" rows="4" data-answer></textarea>
+          </div>
+        </section>
+      </form>
+
+      <div class="toolbar no-print" data-toolbar>
+        <button type="button" class="btn btn--ghost" data-prev disabled>이전</button>
+        <button type="button" class="btn btn--ghost" data-clear>초기화</button>
+        <button type="button" class="btn btn--primary" data-next>다음</button>
+      </div>
+
+      <p class="save-status no-print" data-save-status aria-live="polite"></p>
+    </main>
+
+    <div class="fab-group no-print">
+      <button
+        class="fab-button"
+        type="button"
+        title="맨 위로"
+        aria-label="맨 위로 이동"
+        data-top-button
+      >
+        <svg
+          class="fab-icon"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            d="M12 5v14M6.5 10.5 12 5l5.5 5.5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+      <button
+        class="fab-button"
+        type="button"
+        title="인쇄 / PDF로 저장"
+        aria-label="인쇄 또는 PDF로 저장"
+        data-print-button
+      >
+        <svg
+          class="fab-icon"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            d="M7 8V4h10v4M7 16H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <rect
+            x="7"
+            y="14"
+            width="10"
+            height="6"
+            rx="1"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+          />
+          <circle cx="17.5" cy="11" r="0.9" fill="currentColor" />
+        </svg>
+      </button>
+    </div>
+
+    <footer class="site-footer no-print">
+      <p>
+        Based on G. Pólya,
+        <em>How to Solve It</em>
+        ·
+        <a
+          href="https://en.wikipedia.org/wiki/How_to_Solve_It"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Wikipedia</a
+        >
+      </p>
+    </footer>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
