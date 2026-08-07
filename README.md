@@ -1,8 +1,8 @@
-# how-to-solve-it-diagram
+# how-to-solve-it
 
 폴리아의 《어떻게 풀 것인가》(How to Solve It) 네 단계를 따라 문제를 정리하는 **정적 워크시트**.
 
-- 사이트: https://datalater.github.io/how-to-solve-it-diagram/
+- 사이트: https://datalater.github.io/how-to-solve-it/
 - 런타임 의존성 없음 (순수 HTML / CSS / JS)
 - 답변은 `localStorage`에 자동 저장
 - **Print / PDF**: 브라우저 인쇄 → “PDF로 저장”
