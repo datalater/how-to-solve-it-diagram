@@ -252,7 +252,6 @@
     window.print();
   });
 
-
   window.addEventListener("beforeprint", preparePrint);
   window.addEventListener("afterprint", restoreAfterPrint);
   window.addEventListener("scroll", syncStuckState, { passive: true });

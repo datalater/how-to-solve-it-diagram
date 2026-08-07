@@ -205,51 +205,16 @@ body {
   top: 0;
   z-index: 40;
   margin: 0.55rem -1.35rem 0.25rem;
-  padding: 0.65rem 1.35rem;
+  padding: 0.35rem 1.35rem;
   background: rgba(251, 252, 253, 0.92);
   border-bottom: 1px solid transparent;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  transition:
-    padding 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
 }
 
 .step-nav.is-stuck {
-  padding: 0.35rem 1.35rem;
   border-bottom-color: rgba(28, 36, 48, 0.08);
   box-shadow: 0 6px 16px rgba(28, 36, 48, 0.06);
-}
-
-.step-nav.is-stuck .step-nav__list {
-  gap: 0.3rem;
-}
-
-.step-nav.is-stuck .step-nav__btn {
-  flex-direction: row;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.35rem 0.55rem;
-  border-radius: 999px;
-  transform: none;
-}
-
-.step-nav.is-stuck .step-nav__btn.is-active {
-  transform: none;
-}
-
-.step-nav.is-stuck .step-nav__num {
-  font-size: 0.7rem;
-  opacity: 0.75;
-}
-
-.step-nav.is-stuck .step-nav__label {
-  font-size: 0.78rem;
-}
-
-.worksheet[data-view="all"] .step-nav__btn.is-active {
-  transform: none;
 }
 
 .worksheet[data-view="all"] .step {
@@ -280,29 +245,32 @@ body {
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.45rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.3rem;
 }
 
 .step-nav__btn {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.2rem;
-  padding: 0.65rem 0.7rem;
+  min-width: 0;
+  display: block;
+  padding: 0.4rem 0.35rem;
   border: 1px solid var(--line);
-  border-radius: 10px;
+  border-radius: 999px;
   background: #fff;
   color: var(--muted);
   cursor: pointer;
   font: inherit;
-  text-align: left;
+  font-size: 0.78rem;
+  font-weight: 650;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   transition:
     border-color 0.2s ease,
     background 0.2s ease,
-    color 0.2s ease,
-    transform 0.2s ease;
+    color 0.2s ease;
 }
 
 .step-nav__btn:hover {
@@ -319,18 +287,6 @@ body {
   border-color: var(--accent);
   background: var(--accent-soft);
   color: var(--ink);
-  transform: translateY(-1px);
-}
-
-.step-nav__num {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
-
-.step-nav__label {
-  font-size: 0.82rem;
-  font-weight: 600;
 }
 
 .solve-form {
@@ -570,21 +526,9 @@ textarea:focus {
 }
 
 @media (max-width: 560px) {
-  .step-nav__list {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
   .step-nav__btn {
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 0.2rem;
-    padding: 0.45rem 0.2rem;
-  }
-
-  .step-nav__num,
-  .step-nav__label {
     font-size: 0.72rem;
+    padding: 0.35rem 0.2rem;
   }
 
   .toolbar {
