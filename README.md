@@ -15,9 +15,7 @@ npx --yes serve public
 
 ## 배포
 
-`master` 또는 `main` 브랜치 push 시 GitHub Pages로 자동 배포됩니다. (`resume`와 동일한 Actions 방식)
-
-저장소 Settings → Pages → Source를 **GitHub Actions**로 설정해야 합니다.
+`main` 브랜치 push 시 GitHub Pages로 자동 배포됩니다. (`resume`와 동일한 Actions 방식)
 
 ## 구조
 
