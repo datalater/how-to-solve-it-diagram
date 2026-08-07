@@ -171,15 +171,16 @@ body {
 }
 
 .view-toggle__btn {
-  min-height: 2rem;
-  padding: 0 0.95rem;
+  min-height: 0;
+  padding: 0.4rem 0.85rem;
   border: 0;
   border-radius: 999px;
   background: transparent;
   color: var(--muted);
   font: inherit;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   font-weight: 650;
+  line-height: 1.2;
   cursor: pointer;
   transition:
     background 0.2s ease,
@@ -526,8 +527,12 @@ textarea:focus {
 }
 
 @media (max-width: 560px) {
+  .view-toggle__btn,
   .step-nav__btn {
     font-size: 0.72rem;
+  }
+
+  .step-nav__btn {
     padding: 0.35rem 0.2rem;
   }
 
